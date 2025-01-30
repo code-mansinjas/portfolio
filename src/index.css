@@ -212,7 +212,7 @@ section {
 }
 
 .section__text__p2 {
-    height: 30px;
+    height: 42px;
     font-size: 1.75rem;
     margin-bottom: 1rem;
 }
@@ -575,6 +575,7 @@ footer p {
 
     .section__text__p2 {
         font-size: 1.25rem;
+        height: 30px;
     }
 
     .title {
