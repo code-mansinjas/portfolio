@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import { ProfileData } from './constant/data';
 import './index.css'
 
@@ -15,6 +16,40 @@ function App() {
     if (level == 2) return "Intermediate"
     if (level == 3 || level > 3) return "Experienced"
   }
+
+  useEffect(()=>{
+    const roles = ["Full Stack Developer ", "Backend Developer ", "Blockchain Developer "];
+    let index = 0, charIndex = 0, isDeleting = false;
+    function typeEffect(){
+      const span = document.getElementById("typed-text");
+        let currentRole = roles[index];
+
+        if(!span) return 
+
+        if (isDeleting) {
+            span.textContent = currentRole.substring(0, charIndex--);
+        } else {
+            span.textContent = currentRole.substring(0, charIndex++);
+        }
+
+        let speed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            speed = 2000; // Pause after typing full word
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            index = (index + 1) % roles.length;
+            speed = 500;
+        }
+
+        setTimeout(typeEffect, speed);
+    }
+
+    typeEffect()
+
+  },[])
+
   return (
     <>
       <nav id="desktop-nav">
@@ -51,11 +86,11 @@ function App() {
         <div className="section__text">
           <p className="section__text__p1">Hello, I'm</p>
           <h1 className="title">{ProfileData.name}</h1>
-          <p className="section__text__p2">{ProfileData.skill}</p>
+          <p className="section__text__p2 typing " id='typed-text'></p>
           <div className="btn-container">
             <a
               className="btn btn-color-2"
-              href="/resume-example.pdf"
+              href="/resume.pdf"
               target='_blank'
             >
               Download CV

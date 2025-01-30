@@ -32,6 +32,8 @@ a:hover{
     text-decoration: none;
 }
 
+
+
 /* DESKTOP NAV */
 
 nav,
@@ -57,13 +59,23 @@ a {
     text-decoration-color: white;
 }
 
-a:hover {
+/* a:hover {
     color: grey;
     text-decoration: underline;
     text-underline-offset: 1rem;
     text-decoration-color: rgb(181, 181, 181);
-}
+} */
 
+.typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #fff; /* Blinking Cursor Effect */
+    padding-right: 5px;
+}
+@keyframes blink {
+    50% { border-color: transparent; }
+}
 .logo {
     font-size: 2rem;
 }
@@ -200,6 +212,7 @@ section {
 }
 
 .section__text__p2 {
+    height: 30px;
     font-size: 1.75rem;
     margin-bottom: 1rem;
 }
@@ -524,6 +537,11 @@ footer p {
     .contact-info-upper-container,
     .btn-container {
         flex-wrap: wrap;
+    }
+
+    .about-containers,
+    .contact-info-upper-container {
+        flex-direction: column;
     }
 
     .contact-info-container {
